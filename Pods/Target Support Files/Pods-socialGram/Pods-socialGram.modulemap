@@ -1,0 +1,6 @@
+framework module Pods_socialGram {
+  umbrella header "Pods-socialGram-umbrella.h"
+
+  export *
+  module * { export * }
+}
