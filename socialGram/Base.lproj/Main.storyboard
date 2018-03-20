@@ -25,10 +25,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lTS-mH-Gld">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="145"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="147"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="3907449f-3ef9-4e6e-adaf-b29b7f593072" translatesAutoresizingMaskIntoConstraints="NO" id="fNp-ZF-0B7">
-                                        <rect key="frame" x="87.5" y="-27.5" width="200" height="200"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="3907449f-3ef9-4e6e-adaf-b29b7f593072" translatesAutoresizingMaskIntoConstraints="NO" id="fNp-ZF-0B7">
+                                        <rect key="frame" x="88" y="0.0" width="195" height="147"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.73725490199999999" blue="0.83137254900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -60,21 +60,21 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Select a sign in method" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mvT-Ti-fgv">
                                 <rect key="frame" x="0.0" y="165" width="375" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="QK4-yX-V4K"/>
+                                    <constraint firstAttribute="height" constant="25" id="QK4-yX-V4K" userLabel="height = 5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dQQ-ju-ebP">
-                                <rect key="frame" x="87.5" y="209" width="200" height="150"/>
+                            <button contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dQQ-ju-ebP">
+                                <rect key="frame" x="88" y="198" width="199" height="175"/>
                                 <color key="backgroundColor" red="0.23357817530632019" green="0.34701001644134521" blue="0.5960078239440918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.90000000000000002" height="0.90000000000000002"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="H1f-nr-CZ2"/>
-                                    <constraint firstAttribute="width" constant="200" id="gfV-Va-1NO"/>
+                                    <constraint firstAttribute="height" constant="200" id="H1f-nr-CZ2" userLabel="height = 100"/>
+                                    <constraint firstAttribute="width" constant="200" id="gfV-Va-1NO" userLabel="width = 100"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="f"/>
+                                <state key="normal" image="f"/>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sR2-ij-YXB">
                                 <rect key="frame" x="77" y="387" width="228" height="30"/>
@@ -125,7 +125,6 @@
                             <constraint firstItem="lTS-mH-Gld" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="fzb-6b-vUF"/>
                             <constraint firstItem="dQQ-ju-ebP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gl9-7w-bmg"/>
                             <constraint firstItem="nGW-Ad-LGW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hIf-ET-66N"/>
-                            <constraint firstItem="dQQ-ju-ebP" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="hKh-rb-5nd"/>
                             <constraint firstItem="nGW-Ad-LGW" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="mdf-0O-knu"/>
                             <constraint firstItem="nPP-nT-RWu" firstAttribute="top" secondItem="L8t-bA-3kb" secondAttribute="bottom" constant="16" id="nKa-Cs-UFf"/>
                             <constraint firstItem="sR2-ij-YXB" firstAttribute="top" secondItem="dQQ-ju-ebP" secondAttribute="bottom" constant="28" id="tVe-iv-E62"/>
@@ -142,6 +141,6 @@
     </scenes>
     <resources>
         <image name="3907449f-3ef9-4e6e-adaf-b29b7f593072" width="200" height="200"/>
-        <image name="f" width="480" height="480"/>
+        <image name="f" width="128" height="128"/>
     </resources>
 </document>
