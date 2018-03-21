@@ -34,6 +34,7 @@
 		5BA5F2A72060B46300A76C2F /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		5BA5F2A92060B75000A76C2F /* TextFieldDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldDesignView.swift; sourceTree = "<group>"; };
 		5BA5F2AC2060BB1A00A76C2F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5BA5F2AE2060D96D00A76C2F /* socialGram.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = socialGram.entitlements; sourceTree = "<group>"; };
 		BE398B19B3B12D6F418B406C /* Pods-socialGram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-socialGram.release.xcconfig"; path = "Pods/Target Support Files/Pods-socialGram/Pods-socialGram.release.xcconfig"; sourceTree = "<group>"; };
 		DA20339862B878BC7F18AF25 /* Pods_socialGram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_socialGram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -71,6 +72,7 @@
 		5BA5F28A205A20CF00A76C2F /* socialGram */ = {
 			isa = PBXGroup;
 			children = (
+				5BA5F2AE2060D96D00A76C2F /* socialGram.entitlements */,
 				5BA5F2AC2060BB1A00A76C2F /* Assets.xcassets */,
 				5BA5F2AB2060BAF000A76C2F /* New Group */,
 				5BA5F2A42060B04900A76C2F /* Util */,
@@ -179,6 +181,11 @@
 					5BA5F287205A20CF00A76C2F = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -255,6 +262,9 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-socialGram/Pods-socialGram-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -262,6 +272,9 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -422,7 +435,9 @@
 			baseConfigurationReference = 05A024C3253B6929D64E5E69 /* Pods-socialGram.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = socialGram/socialGram.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H8M98RNKZ6;
 				INFOPLIST_FILE = socialGram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.iosDev.socialGram;
@@ -437,7 +452,9 @@
 			baseConfigurationReference = BE398B19B3B12D6F418B406C /* Pods-socialGram.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = socialGram/socialGram.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H8M98RNKZ6;
 				INFOPLIST_FILE = socialGram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.iosDev.socialGram;
