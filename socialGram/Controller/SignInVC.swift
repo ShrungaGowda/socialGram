@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FBSDKLoginKit
 import FBSDKCoreKit
+import SwiftKeychainWrapper
 
 class SignInVC: UIViewController {
 
@@ -22,6 +23,12 @@ class SignInVC: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
+    //App used saved PWD in Keychain to login as soon as app starts - To early to do this in ViewDidLoad so added here ViewDidAppear
+    override func viewDidAppear(_ animated: Bool) {
+        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID){
+            performSegue(withIdentifier: SIGN_IN_SEG, sender: nil)
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -52,6 +59,10 @@ class SignInVC: UIViewController {
                 print("LOGIN ERROR : Unable to login with firebase \(String(describing: error))")
             }else{
                  print("LOGIN SUCCESSFUL : Able to login with firebase")
+                //Save pwd in KeyChain
+                if let user = user{
+                    self.completeSignIn(id:user.uid)
+                }
             }
         }
     }
@@ -62,18 +73,32 @@ class SignInVC: UIViewController {
             Auth.auth().signIn(withEmail: email, password: pwd, completion: { (user, error) in
                 if error == nil{
                     print("Email LOGIN : User authenticated with FireBase")
+                    //Save pwd in KeyChain
+                    if let user = user{
+                       self.completeSignIn(id:user.uid)
+                    }
                 }else{
                     Auth.auth().createUser(withEmail: email, password: pwd, completion: { (user, error) in
                         if error != nil{
                             print("LOGIN ERROR : Unable to Create Login")
                         }else{
                             print("LOGIN SUCCESSFUL : Sucessfully Created account and authenticated")
+                           //Save pwd in KeyChain
+                            if let user = user{
+                                self.completeSignIn(id:user.uid)
+                            }
                         }
                     })
                 }
             })
         }
         
+    }
+    
+    func completeSignIn(id : String){
+        KeychainWrapper.standard.set(id,forKey:KEY_UID)
+        print("KEY CHAIN : Successfully saved PWD")
+        performSegue(withIdentifier: SIGN_IN_SEG, sender: nil)
     }
 }
 
