@@ -61,7 +61,8 @@ class SignInVC: UIViewController {
                  print("LOGIN SUCCESSFUL : Able to login with firebase")
                 //Save pwd in KeyChain
                 if let user = user{
-                    self.completeSignIn(id:user.uid)
+                    let userData = ["provider":credential.provider]
+                    self.completeSignIn(id:user.uid,userData: userData)
                 }
             }
         }
@@ -75,7 +76,8 @@ class SignInVC: UIViewController {
                     print("Email LOGIN : User authenticated with FireBase")
                     //Save pwd in KeyChain
                     if let user = user{
-                       self.completeSignIn(id:user.uid)
+                        let userData = ["provider":user.providerID]
+                       self.completeSignIn(id:user.uid,userData:userData )
                     }
                 }else{
                     Auth.auth().createUser(withEmail: email, password: pwd, completion: { (user, error) in
@@ -85,7 +87,8 @@ class SignInVC: UIViewController {
                             print("LOGIN SUCCESSFUL : Sucessfully Created account and authenticated")
                            //Save pwd in KeyChain
                             if let user = user{
-                                self.completeSignIn(id:user.uid)
+                                let userData = ["provider":user.providerID]
+                                self.completeSignIn(id:user.uid,userData:userData)
                             }
                         }
                     })
@@ -95,7 +98,8 @@ class SignInVC: UIViewController {
         
     }
     
-    func completeSignIn(id : String){
+    func completeSignIn(id : String,userData:Dictionary<String, String> ){
+        DataService.ds.createFIRDataBaseUser(uid: id, userData: userData)
         KeychainWrapper.standard.set(id,forKey:KEY_UID)
         print("KEY CHAIN : Successfully saved PWD")
         performSegue(withIdentifier: SIGN_IN_SEG, sender: nil)
