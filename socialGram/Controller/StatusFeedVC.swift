@@ -15,15 +15,27 @@ class StatusFeedVC: UIViewController,UITableViewDelegate ,UITableViewDataSource{
     
     @IBOutlet weak var tableView : UITableView!
     
+    var posts = [Post]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.delegate = self
         tableView.dataSource = self
         
-        DataService.ds.REF_BASE.observe(.value) { (snapshot) in
-            print(snapshot.value)
-        }
+        DataService.ds.REF_POSTS.observe(.value, with: { (snapshot) in
+            if let snapShots = snapshot.children.allObjects as? [DataSnapshot] {
+                for snap in snapShots{
+                    print("SNAP FEED: \(snapShots)")
+                    if let postDict = snap.value as? Dictionary<String, AnyObject>{
+                        let key = snap.key
+                        let post = Post(postKey: key,postData: postDict)
+                        self.posts.append(post)
+                    }
+                }
+            }
+            self.tableView.reloadData()
+        })
     }
 
     func numberOfSections(in tableView:UITableView) -> Int {
@@ -31,10 +43,13 @@ class StatusFeedVC: UIViewController,UITableViewDelegate ,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView,numberOfRowsInSection section:Int) -> Int{
-        return 3
+       return posts.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let post = posts[indexPath.row]
+         print("post : \(post.caption)")
         return tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
     }
   

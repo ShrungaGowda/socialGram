@@ -21,6 +21,7 @@
 		5BA5F2B22062271E00A76C2F /* circleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA5F2B12062271E00A76C2F /* circleView.swift */; };
 		5BA5F2B4206358C400A76C2F /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA5F2B3206358C400A76C2F /* PostCell.swift */; };
 		5BA5F2B72063762000A76C2F /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA5F2B62063762000A76C2F /* DataService.swift */; };
+		5BA5F2B92064B1A300A76C2F /* post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA5F2B82064B1A300A76C2F /* post.swift */; };
 		F1B3FB8E7AED784D5321EEC0 /* Pods_socialGram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA20339862B878BC7F18AF25 /* Pods_socialGram.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		5BA5F2B12062271E00A76C2F /* circleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = circleView.swift; sourceTree = "<group>"; };
 		5BA5F2B3206358C400A76C2F /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		5BA5F2B62063762000A76C2F /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		5BA5F2B82064B1A300A76C2F /* post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = post.swift; sourceTree = "<group>"; };
 		BE398B19B3B12D6F418B406C /* Pods-socialGram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-socialGram.release.xcconfig"; path = "Pods/Target Support Files/Pods-socialGram/Pods-socialGram.release.xcconfig"; sourceTree = "<group>"; };
 		DA20339862B878BC7F18AF25 /* Pods_socialGram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_socialGram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -100,6 +102,7 @@
 		5BA5F29F205A252900A76C2F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5BA5F2B82064B1A300A76C2F /* post.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BA5F2B92064B1A300A76C2F /* post.swift in Sources */,
 				5BA5F2B22062271E00A76C2F /* circleView.swift in Sources */,
 				5BA5F2AA2060B75000A76C2F /* TextFieldDesignView.swift in Sources */,
 				5BA5F28E205A20CF00A76C2F /* SignInVC.swift in Sources */,
