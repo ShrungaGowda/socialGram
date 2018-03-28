@@ -13,15 +13,17 @@ import Firebase
 class StatusFeedVC: UIViewController,UITableViewDelegate ,UITableViewDataSource{
 
     
-    @IBOutlet weak var tableView : UITableView!
+    @IBOutlet weak var tableView: UITableView!
     
     var posts = [Post]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+       //self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "PostCell")
+        
         tableView.delegate = self
         tableView.dataSource = self
+        
         
         DataService.ds.REF_POSTS.observe(.value, with: { (snapshot) in
             if let snapShots = snapshot.children.allObjects as? [DataSnapshot] {
@@ -44,13 +46,17 @@ class StatusFeedVC: UIViewController,UITableViewDelegate ,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView,numberOfRowsInSection section:Int) -> Int{
        return posts.count
+       
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let post = posts[indexPath.row]
-         print("post : \(post.caption)")
-        return tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
+       let post = posts[indexPath.row]
+        if let cell =  tableView.dequeueReusableCell(withIdentifier: "PostCell") as? PostCell{
+                   
+                    return cell
+        }else{
+            return PostCell()
+        }
     }
   
     @IBAction func signOut(_ sender: AnyObject) {
