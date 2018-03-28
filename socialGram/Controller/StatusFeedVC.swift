@@ -10,12 +10,14 @@ import UIKit
 import SwiftKeychainWrapper
 import Firebase
 
-class StatusFeedVC: UIViewController,UITableViewDelegate ,UITableViewDataSource{
+class StatusFeedVC: UIViewController,UITableViewDelegate ,UITableViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
 
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var addImage: UIImageView!
     
     var posts = [Post]()
+    var imagePicker: UIImagePickerController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +26,9 @@ class StatusFeedVC: UIViewController,UITableViewDelegate ,UITableViewDataSource{
         tableView.delegate = self
         tableView.dataSource = self
         
+        imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = true
+        imagePicker.delegate = self
         
         DataService.ds.REF_POSTS.observe(.value, with: { (snapshot) in
             if let snapShots = snapshot.children.allObjects as? [DataSnapshot] {
@@ -59,6 +64,21 @@ class StatusFeedVC: UIViewController,UITableViewDelegate ,UITableViewDataSource{
         }
     }
   
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let image = info [UIImagePickerControllerEditedImage] as? UIImage {
+            addImage.image = image
+        }else{
+            print("UIIMAGE : A valid image wasnt updated")
+        }
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
+    
+   
+    @IBAction func addImageTapped(_ sender: Any) {
+         present(imagePicker, animated: true, completion: nil)
+    }
+    
     @IBAction func signOut(_ sender: AnyObject) {
         KeychainWrapper.standard.removeObject(forKey : KEY_UID)
         print("KEYCHAIN : Succesfully removed PWd from keychain")
